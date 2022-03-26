@@ -20,5 +20,8 @@ class Customer extends Model
 
     public $timestamps = false;
 
+    public function services() {
+        return $this->hasMany(Service::class);
+    }
 
 }
