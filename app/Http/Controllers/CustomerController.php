@@ -10,12 +10,13 @@ use App\Http\Requests\CustomerUpdateRequest;
 class CustomerController extends Controller
 {
 
+    // Obtiene los clientes y lista los servicios asociados
     public function getCustomers() {
         $customers = Customer::with('services')->get();
         return response()->json($customers);
     }
 
-
+    // Obtiene un cliente por id y lista los servicios asociados
     public function getCustomerById($id) {
         $customer = Customer::with('services')->find($id);
 
@@ -26,7 +27,7 @@ class CustomerController extends Controller
         return response()->json($customer);
     }
 
-
+    // Crea un nuevo cliente
     public function addCustomer(CustomerRequest $request) {
 
         $customer = Customer::create($request->all());
@@ -39,7 +40,7 @@ class CustomerController extends Controller
 
     }
 
-
+    // Actualiza un cliente
     public function updateCustomer(CustomerUpdateRequest $request, $id) {
 
         $customer = Customer::find($id);
@@ -54,6 +55,7 @@ class CustomerController extends Controller
 
     }
 
+    // Elimina un cliente
     public function deleteCustomer($id) {
 
         $customer = Customer::find($id);
