@@ -27,9 +27,8 @@ Route::post('auth/logout', 'AuthController@logout')->middleware(['auth:sanctum']
 /*SANCTUM*/
 Route::group(['middleware' => 'auth:sanctum'], function() {
 
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
+    //Obtener Usuario Logueado
+    Route::get('user', 'AuthController@user');
 
     // Customer
     Route::get('/customers', 'CustomerController@getCustomers');
